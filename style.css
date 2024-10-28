@@ -21,6 +21,7 @@ html {
     position: fixed;
     height: 100vh;
     width: 220px;
+    z-index: 1;
 }
 
 .content-container {
@@ -35,9 +36,9 @@ html {
 /* Toggle sidebar */
 
 .toggle-sidebar {
-    position: absolute;
-    width: 1.5em;
-    z-index: 1;
+    position: fixed;
+    width: 2em;
+    z-index: 2;
 }
 
 .toggle-sidebar:has(input[type=checkbox]) {
@@ -62,7 +63,7 @@ html {
 }
 
 .toggle-sidebar:has(input[type=checkbox]:checked) + .container > .sidebar {
-    transform: translateX(calc(-100% + 1em));
+    transform: translateX(-100%);
 }
 
 .sidebar {
@@ -70,8 +71,8 @@ html {
 }
 
 .toggle-sidebar:has(input[type=checkbox]:checked) + .container > .content-container {
-    width: calc(100% - 1em);
-    margin-left: 1em;
+    width: calc(100% - 2em);
+    margin-left: 2em;
 }
 
 .content-container {
@@ -258,8 +259,10 @@ html {
 
 .content {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: minmax(min-content, 3fr) 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 1em;
+    padding: 2.5em 1em;
 }
 
 .projects {
@@ -275,6 +278,57 @@ html {
     grid-area: 2 / 2 / 3 / 3;
 }
 
-.announcements p {
+/* Projects */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-rows: 2em repeat(auto-fill, 200px);
+    gap: 1.5em;
+}
+
+.projects h2 {
+    grid-area: 1 / 1 / 2 / -1;
+    padding: 0.2em;
+}
+
+.card {
+    background-color: white;
+    position: relative;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.card::before {
+    content: "";
+    background-color: orange;
+    position: absolute;
+    width: 1em;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.content-text {
+    height: 80%;
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.content-text:hover::after {
+    position: absolute;
+    content: '(' attr(content) ')';
+    width: 250px;
+    left: 50%;
+    top: 0;
+    background-color: white;
+    border: 1px solid;
+    overflow: none;
+    white-space: wrap;
+    padding: 0.5em;
+    border-radius: 10px;
+    z-index: 99;
 }
