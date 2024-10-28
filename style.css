@@ -15,7 +15,7 @@ html {
     min-height: 100vh;
     display: grid;
     grid-template-columns: minmax(200px, 1fr) 4fr;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: min-content 1fr;
     grid-template-areas: 
         "sidebar header"
         "sidebar content";
@@ -27,7 +27,7 @@ html {
 
 .sidebar {
     grid-area: sidebar;
-    background-color: rgb(0, 115, 223);
+    background-color: #479dee;
 }
 
 .content {
@@ -74,4 +74,122 @@ html {
 
 .menu .icon.logo {
     width: 2em;
+}
+
+/* Header style */
+
+.header {
+    display: grid;
+    grid-template-rows: min-content min-content;
+    padding: .5em;
+}
+
+/* Top-header */
+
+.search-container {
+    display: flex;
+    flex-flow: row wrap-reverse;
+    padding: 0 2em;
+}
+
+.search-bar, .profile {
+    padding: 0.4em;
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+
+.search-bar {
+    flex: 3 0 auto;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.profile {
+    flex: 2 0 auto;
+    justify-content: flex-end;
+    min-width: 150px;
+    padding-left: 5em;
+}
+
+.header .icon {
+    width: 1.8em;
+}
+
+input[type=search] {
+    width: max(200px, 80%);
+    border-radius: 5px;
+    height: 2em;
+}
+
+.profile-picture {
+    width: 1.8em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 1px 1px 3px 1px black;
+}
+
+.username {
+    min-width: max-content;
+}
+
+/* Bottom header */
+
+.post-creator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1em;
+    gap: 2em
+}
+
+.welcome {
+    display: flex;
+    gap: 1em
+}
+
+.welcome-msg {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-msg .username {
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.welcome .profile-picture {
+    width: 2.5em;
+}
+
+.post-options {
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.post-option-btn {
+    appearance: none;
+    padding: 0.5em 2em;
+    border-radius: 15px;
+    background-color: #479dee;
+    border: none;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+.post-option-btn:hover, .post-option-btn:active {
+    background-color: #5faaf0;
+    box-shadow: 1px 1px 3px #888;
+    transform: translateY(-2px);
+    transition: all 0.1s ease-in;
+}
+
+.post-option-btn:active {
+    transform: translateY(3px);
+    transition: all 0.1s ease-in;
 }
