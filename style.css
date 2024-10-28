@@ -4,6 +4,12 @@
     padding: 0;
 }
 
+html {
+    font-size: 16px;
+}
+
+/* Basic layout */
+
 .container {
     width: 100%;
     min-height: 100vh;
@@ -21,10 +27,51 @@
 
 .sidebar {
     grid-area: sidebar;
-    background-color: aqua;
+    background-color: rgb(0, 115, 223);
 }
 
 .content {
     grid-area: content;
     background-color: #eee;
+}
+
+/* Sidebar style */
+
+.sidebar {
+    padding: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu > * {
+    margin-bottom: 1.5em;
+}
+
+.menu h2, .sidebar li {
+    display: flex;
+    align-items: center;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em
+}
+
+.menu h2 {
+    font-size: 1.5rem;
+}
+
+.menu li {
+    font-size: 1.1rem;
+}
+
+.menu .icon {
+    width: 1.5em;
+    margin-right: 0.5em;
+}
+
+.menu .icon.logo {
+    width: 2em;
 }
