@@ -88,13 +88,11 @@ html {
 }
 
 .menu {
+    height: 100%;
     display: grid;
     grid-template-rows: 1fr 3fr 2fr;
     align-items: center;
-}
-
-.menu > * {
-    margin-bottom: 1.5em;
+    font-size: 1rem;
 }
 
 .menu h2, .sidebar li {
@@ -109,16 +107,16 @@ html {
 }
 
 .menu h2 {
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 .menu li {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     cursor: pointer;
 }
 
 .menu li:hover {
-    font-size: 1.3rem;
+    font-size: 1.3em;
     transition: all 0.2s ease-in;
     color: #222;
     text-shadow: 0.5px 0.5px 1px black;
@@ -254,4 +252,29 @@ html {
 .post-option-btn:active {
     transform: translateY(3px);
     transition: all 0.1s ease-in;
+}
+
+/* Content */
+
+.content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.projects {
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+
+.announcements {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.trending {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.announcements p {
+    text-overflow: ellipsis;
 }
