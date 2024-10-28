@@ -13,34 +13,87 @@ html {
 .container {
     width: 100%;
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: minmax(200px, 1fr) 4fr;
-    grid-template-rows: min-content 1fr;
-    grid-template-areas: 
-        "sidebar header"
-        "sidebar content";
-}
-
-.header {
-    grid-area: header;
+    display: flex;
 }
 
 .sidebar {
-    grid-area: sidebar;
     background-color: #479dee;
+    position: fixed;
+    height: 100vh;
+    width: 220px;
+}
+
+.content-container {
+    width: calc(100% - 220px);
+    margin-left: 220px;
 }
 
 .content {
-    grid-area: content;
     background-color: #eee;
+}
+
+/* Toggle sidebar */
+
+.toggle-sidebar {
+    position: absolute;
+    width: 1.5em;
+    z-index: 1;
+}
+
+.toggle-sidebar:has(input[type=checkbox]) {
+    height: 100vh;
+}
+
+.toggle-sidebar input[type=checkbox] {
+    appearance: none;
+} 
+
+.toggle-sidebar label::after {
+    content: url("./assets/menu-icon.svg");
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+}
+
+.toggle-sidebar label:has(+ input[type=checkbox]:checked)::after {
+    content: url("./assets/arrow-icon.svg");
+    padding: calc(50vh - 1em) 0;
+    background-color: #479dee;
+}
+
+.toggle-sidebar:has(input[type=checkbox]:checked) + .container > .sidebar {
+    transform: translateX(calc(-100% + 1em));
+}
+
+.sidebar {
+    transition: transform 0.5s ease-in;
+}
+
+.toggle-sidebar:has(input[type=checkbox]:checked) + .container > .content-container {
+    width: calc(100% - 1em);
+    margin-left: 1em;
+}
+
+.content-container {
+    transition: all 0.5s ease-in;
+}
+
+.content-container > * {
+    transition: all 0.5s ease-in;
 }
 
 /* Sidebar style */
 
 .sidebar {
-    padding: 1.2em;
+    padding: 2.2em 1.2em 1.2em;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.menu {
+    display: grid;
+    grid-template-rows: 1fr 3fr 2fr;
     align-items: center;
 }
 
@@ -65,6 +118,14 @@ html {
 
 .menu li {
     font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    font-size: 1.3rem;
+    transition: all 0.2s ease-in;
+    color: #222;
+    text-shadow: 0.5px 0.5px 1px black;
 }
 
 .menu .icon {
@@ -112,17 +173,17 @@ html {
     padding-left: 5em;
 }
 
-.header .icon {
+:is(.search-container, .profile) .icon {
     width: 1.8em;
 }
 
-input[type=search] {
+.search-container input[type=search] {
     width: max(200px, 80%);
     border-radius: 5px;
     height: 2em;
 }
 
-.profile-picture {
+.profile .profile-picture {
     width: 1.8em;
     aspect-ratio: 1;
     border-radius: 50%;
@@ -130,7 +191,7 @@ input[type=search] {
     box-shadow: 1px 1px 3px 1px black;
 }
 
-.username {
+.profile .username {
     min-width: max-content;
 }
 
@@ -158,10 +219,15 @@ input[type=search] {
 .welcome-msg .username {
     font-weight: 500;
     font-size: 1.2em;
+    width: max-content;
 }
 
 .welcome .profile-picture {
     width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 1px 1px 3px 1px black;
 }
 
 .post-options {
