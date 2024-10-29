@@ -119,7 +119,7 @@ html {
 
 .menu li:hover {
     font-size: 1.3em;
-    transition: all 0.2s ease-in;
+    transition: font-size 0.2s ease-in;
     color: #222;
     text-shadow: 0.5px 0.5px 1px black;
 }
@@ -248,12 +248,12 @@ html {
     background-color: #5faaf0;
     box-shadow: 1px 1px 3px #888;
     transform: translateY(-2px);
-    transition: all 0.1s ease-in;
+    transition: transform 0.1s ease-in;
 }
 
 .post-option-btn:active {
     transform: translateY(3px);
-    transition: all 0.1s ease-in;
+    transition: transform 0.1s ease-in;
 }
 
 /* Content */
@@ -332,6 +332,8 @@ html {
     padding: 0.5em;
     border-radius: 10px;
     z-index: 99;
+    cursor: text;
+    user-select: text;
 }
 
 .action-buttons {
@@ -351,7 +353,7 @@ html {
 .btn-action label {
     width: 2em;
     cursor: pointer;
-    transition: all 0.2s ease-in;
+    transition: transform 0.2s ease-in;
 }
 
 .btn-action label:hover {
@@ -381,3 +383,46 @@ html {
 }
 
 /* Trending */
+
+.trending > h2 {
+    margin-bottom: 1em;
+}
+
+.trending > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.user {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: .2em 1em;
+}
+
+.user .profile-picture {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 1px 1px 3px 1px black;
+}
+
+.user .username {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.user .state {
+    font-weight: normal;
+    color: #222;
+    width: max-content;
+}
+
+
