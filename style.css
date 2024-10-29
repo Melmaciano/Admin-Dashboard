@@ -112,6 +112,7 @@ html {
 }
 
 .menu li {
+    width: 100%;
     font-size: 1.1em;
     cursor: pointer;
 }
@@ -260,7 +261,6 @@ html {
 .content {
     display: grid;
     grid-template-columns: minmax(min-content, 3fr) 1fr;
-    grid-template-rows: 1fr 1fr;
     gap: 1em;
     padding: 2.5em 1em;
 }
@@ -283,7 +283,8 @@ html {
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-template-rows: 2em repeat(auto-fill, 200px);
+    grid-template-rows: 2em;
+    grid-auto-rows: 200px;
     gap: 1.5em;
 }
 
@@ -331,4 +332,34 @@ html {
     padding: 0.5em;
     border-radius: 10px;
     z-index: 99;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.btn-action input {
+    display: none;
+}
+
+.btn-action {
+    width: 2em;
+}
+
+.btn-action label {
+    width: 2em;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
+.btn-action label:hover {
+    display: block;
+    transform: translateY(-2px);
+    filter: drop-shadow(1px 1px 1px #555)
+}
+
+.btn-action label:active {
+    transform: translateY(3px);
 }
