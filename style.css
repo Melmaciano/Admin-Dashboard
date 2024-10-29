@@ -25,7 +25,7 @@ html {
 }
 
 .content-container {
-    width: calc(100% - 220px);
+    width: 100%;
     margin-left: 220px;
 }
 
@@ -54,6 +54,7 @@ html {
     position: absolute;
     width: 100%;
     cursor: pointer;
+    transition: padding 0.5s ease-in;
 }
 
 .toggle-sidebar label:has(+ input[type=checkbox]:checked)::after {
@@ -71,12 +72,11 @@ html {
 }
 
 .toggle-sidebar:has(input[type=checkbox]:checked) + .container > .content-container {
-    width: calc(100% - 2em);
     margin-left: 2em;
 }
 
 .content-container {
-    transition: width 0.5s ease-in, margin-left 0.5s ease-in
+    transition: margin-left 0.5s ease-in
 }
 
 /* Sidebar style */
@@ -357,9 +357,27 @@ html {
 .btn-action label:hover {
     display: block;
     transform: translateY(-2px);
-    filter: drop-shadow(1px 1px 1px #555)
+    filter: drop-shadow(.5px .5px 1px #555)
 }
 
 .btn-action label:active {
     transform: translateY(3px);
 }
+
+/* Announcements */
+
+.announcements > div {
+    background-color: white;
+    padding: 2em;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1em;
+}
+
+.announcements > h2 {
+    margin-bottom: 1em;
+}
+
+/* Trending */
