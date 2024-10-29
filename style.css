@@ -60,7 +60,6 @@ html {
 .toggle-sidebar label:has(+ input[type=checkbox]:checked)::after {
     content: url("./assets/arrow-icon.svg");
     padding: calc(50vh - 1em) 0;
-    background-color: #479dee;
 }
 
 .toggle-sidebar:has(input[type=checkbox]:checked) + .container > .sidebar {
@@ -86,6 +85,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white
 }
 
 .menu {
@@ -120,8 +120,7 @@ html {
 .menu li:hover {
     font-size: 1.3em;
     transition: font-size 0.2s ease-in;
-    color: #222;
-    text-shadow: 0.5px 0.5px 1px black;
+    text-shadow: 0.5px 0.5px 1px #999;
 }
 
 .menu .icon {
@@ -261,6 +260,7 @@ html {
 .content {
     display: grid;
     grid-template-columns: minmax(min-content, 3fr) 1fr;
+    grid-template-rows: min-content 1fr;
     gap: 1em;
     padding: 2.5em 1em;
 }
@@ -294,9 +294,9 @@ html {
 }
 
 .card {
-    background-color: white;
+    background-color: #ffffff;
     position: relative;
-    padding: 2em;
+    padding: 1.8em;
     border-radius: 10px;
 }
 
@@ -312,7 +312,7 @@ html {
 }
 
 .content-text {
-    height: 80%;
+    height: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -425,4 +425,22 @@ html {
     width: max-content;
 }
 
+/* Last style */
 
+.sidebar .icon, .toggle-sidebar > label::after {
+    filter: invert(100%) sepia(14%) saturate(7472%) hue-rotate(185deg) brightness(114%) contrast(100%)
+}
+
+.toggle-sidebar:has(input:checked) {
+    background-color: #479dee;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset 1px 1px 2px #555,
+        1px 1px 2px #6ab0f1;
+}
+
+input {
+    box-shadow: inset -1px -1px 2px #555;
+}
